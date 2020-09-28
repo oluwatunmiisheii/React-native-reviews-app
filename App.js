@@ -2,7 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
-import Home from './screens/home';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ReviewDetailsScreen from './screens/reviewDetails';
+import HomeScreen from './screens/home';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -15,7 +20,13 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <Home />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ReviewDetails" component={ReviewDetailsScreen} />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
     );
   }
 }
