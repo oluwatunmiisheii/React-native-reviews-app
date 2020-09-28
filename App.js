@@ -3,7 +3,6 @@ import React from 'react';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 import Home from './screens/home';
-import { StyleSheet, View, Text } from 'react-native';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
