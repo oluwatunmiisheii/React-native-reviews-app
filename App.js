@@ -3,17 +3,12 @@ import React from 'react';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import ReviewDetailsScreen from './screens/reviewDetails';
-import HomeScreen from './screens/home';
-
-const Stack = createStackNavigator();
+import DrawerNavigator from './navigation/DrawerNavigation'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
     'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf')
-
   });
 
   if (!fontsLoaded) {
@@ -21,11 +16,8 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="ReviewDetails" component={ReviewDetailsScreen} />
-        </Stack.Navigator>
-        <StatusBar style="auto" />
+        <DrawerNavigator />
+        <StatusBar barStyle="light-content" backgroundColor="#753ff6" />
       </NavigationContainer>
     );
   }
